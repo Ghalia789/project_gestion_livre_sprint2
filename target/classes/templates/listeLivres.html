@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<head>
+    <meta charset="utf-8">
+    <title>Liste des Livres</title>
+</head>
+<body>
+    <div th:replace="template"></div>
+    <div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            Liste des Livres
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <tr>
+                    <th>ID</th>
+                    <th>Titre</th>
+                    <th>Auteur</th>
+                    <th>Genre</th>
+                    <th>Prix</th>
+                    <th>Quantité en Stock</th>
+                    <th>Actions</th>
+                </tr> 
+                <tr th:each="livre:${livres.content}">
+                    <td th:text="${livre.idLivre}"></td>
+                    <td th:text="${livre.titreLivre}"></td>
+                    <td th:text="${livre.auteurLivre}"></td>
+                    <td th:text="${livre.genre?.nomGen}"></td>
+                    <td th:text="${livre.prixLivre}"></td>
+                    <td th:text="${livre.quantiteStock}"></td> 
+                    <td>
+                        <div class="btn-group">
+                            <a class="btn btn-info" th:href="@{editerLivre(id=${livre.idLivre})}">Modifier</a>
+                            <a class="btn btn-danger" onclick="return confirm('Etes-vous sûr ?')" th:href="@{/supprimerLivre(id=${livre.idLivre},page=${currentPage},size=${size})}">
+                                Supprimer
+                            </a>
+                        </div>
+                    </td>
+                </tr> 
+            </table>
+            <ul class="nav nav-pills">
+                <li th:each="page,status:${pages}">
+                    <a th:class="${status.index==currentPage?'btn btn-primary':'btn' }"
+                        th:href="@{ ListeLivres(page=${status.index}, size=${size} ) }"
+                        th:text="${status.index }"></a>
+                </li>
+            </ul>
+            <div class="d-flex justify-content-end">
+                <a class="btn btn-success" th:href="@{/showCreate}">Ajouter un livre</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

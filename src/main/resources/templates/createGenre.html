@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8">
+    <title>Ajouter un genre</title>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+<body>
+    <div th:replace="template"></div>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                Ajouter un genre
+            </div>
+            <div class="card-body">
+                <form method="post" th:object="${genre}" th:action="@{/saveGenre}">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Nom :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" th:field="*{nomGen}" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Date de création :</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" th:field="*{dateCreation}" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12 text-center">
+                            <button type="submit" class="btn btn-success">Ajouter</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

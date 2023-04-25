@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Éditer un genre</title>
+</head>
+<body>
+    <h1>Éditer un genre</h1>
+    <form action="#" th:action="@{/genres/save}" th:object="${genre}" method="post">
+        <input type="hidden" th:field="*{idGen}"/>
+
+        <label for="nom">Nom:</label>
+        <input type="text" id="nom" th:field="*{nomGen}"/><br/>
+
+        <label for="dateCreation">Date de création:</label>
+        <input type="date" id="dateCreation" th:field="*{dateCreation}"/><br/>
+
+        <input type="submit" value="Sauvegarder"/>
+    </form>
+</body>
+</html>

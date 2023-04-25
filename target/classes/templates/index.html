@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ layout:decorator="template">
+ 
+<link rel="stylesheet" type="text/css"
+href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<head> <meta charset="utf-8"> <title>Gestion des Livres</title>
+</head> 
+ <body class="text-center">
+        <div class="form-signin">
+            <form th:action="@{/login}" method="post">
+                <img class="mb-4" src="/images/logo.png" alt="" width="72" height="72">
+                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+                <!-- Username -->
+                <label for="inputUsername" class="sr-only">Username</label>
+                <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required autofocus>
+
+                <!-- Password -->
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" name="remember-me"> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            </form>
+        </div>
+</body>
+</html>
